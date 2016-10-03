@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Score Keeper</string>
+    <string name="reset_button_text">reset</string>
+    <string name="lhs_team_name">Team A</string>
+    <string name="goal_button_text">goal</string>
+    <string name="foal_button_text">foal</string>
+    <string name="rhs_team_name">Team B</string>
+</resources>

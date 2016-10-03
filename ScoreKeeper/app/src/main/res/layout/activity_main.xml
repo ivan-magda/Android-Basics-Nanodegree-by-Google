@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:padding="@dimen/title_text_view_padding"
+                android:text="@string/lhs_team_name"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/linear_layout_score_bottom_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/action_button_left_margin"
+                    android:text="Score: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lhs_team_score_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="@dimen/countable_text_view_left_padding"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="56sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/linear_layout_score_bottom_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/action_button_left_margin"
+                    android:text="Fouls: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lhs_team_foul_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="@dimen/countable_text_view_left_padding"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="56sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/lhs_team_goal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/action_button_bottom_margin"
+                android:layout_marginEnd="@dimen/action_button_left_margin"
+                android:layout_marginLeft="@dimen/action_button_left_margin"
+                android:layout_marginRight="@dimen/action_button_right_margin"
+                android:layout_marginStart="@dimen/action_button_right_margin"
+                android:background="@color/colorAccent"
+                android:onClick="onButtonClick"
+                android:text="@string/goal_button_text"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/lhs_team_foal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/action_button_bottom_space"
+                android:layout_marginEnd="@dimen/action_button_left_margin"
+                android:layout_marginLeft="@dimen/action_button_left_margin"
+                android:layout_marginRight="@dimen/action_button_right_margin"
+                android:layout_marginStart="@dimen/action_button_right_margin"
+                android:background="@color/colorAccent"
+                android:onClick="onButtonClick"
+                android:text="@string/foal_button_text"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/rhs_team_name"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/linear_layout_score_bottom_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/action_button_left_margin"
+                    android:text="Score: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/rhs_team_score_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="@dimen/countable_text_view_left_padding"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="56sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/linear_layout_score_bottom_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/action_button_left_margin"
+                    android:text="Fouls: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/rhs_team_foul_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:paddingLeft="@dimen/countable_text_view_left_padding"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="56sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/rhs_team_goal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/action_button_bottom_margin"
+                android:layout_marginEnd="@dimen/action_button_left_margin"
+                android:layout_marginLeft="@dimen/action_button_left_margin"
+                android:layout_marginRight="@dimen/action_button_right_margin"
+                android:layout_marginStart="@dimen/action_button_right_margin"
+                android:background="@color/colorAccent"
+                android:onClick="onButtonClick"
+                android:text="@string/goal_button_text"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/rhs_team_foal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/action_button_bottom_margin"
+                android:layout_marginEnd="@dimen/action_button_left_margin"
+                android:layout_marginLeft="@dimen/action_button_left_margin"
+                android:layout_marginRight="@dimen/action_button_right_margin"
+                android:layout_marginStart="@dimen/action_button_right_margin"
+                android:background="@color/colorAccent"
+                android:onClick="onButtonClick"
+                android:text="@string/foal_button_text"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reset_score_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/action_button_bottom_space"
+        android:background="@color/colorAccent"
+        android:onClick="onResetButtonClick"
+        android:text="@string/reset_button_text"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
