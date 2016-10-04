@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">MusicalStructure</string>
+    <string name="library_activity_title">Library</string>
+    <string name="library_activity_description">Library activity is a starting point.
+        \nIt contains of playlists, artists, albums, songs elements.
+    \nNavigation bar on the right side contains search button.
+    \nOn the bottom of the activity should be a \"Now playing\" element, like in Google Music App. I suppose this behaviour might be implement using fragments.</string>
+    <string name="playlists_button_title">Playlists</string>
+    <string name="artists_button_title">Artists</string>
+    <string name="albums_button_title">Albums</string>
+    <string name="songs_button_title">Songs</string>
+    <string name="now_playing_button_title">Now Playing</string>
+    <string name="search_button_title">Search</string>
+    <string name="search_activity_title">Search</string>
+    <string name="playlists_activity_title">Playlists</string>
+    <string name="artists_activity_title">Artists</string>
+    <string name="albums_activity_title">Albums</string>
+    <string name="songs_activity_title">Songs</string>
+    <string name="now_playing_activity_title">Now Playing</string>
+    <string name="search_activity_description">Search activity must provide behavior for searching songs, albums, playlists, artists through user music library.
+    \nIt constains of EditText and ListView with the search results.</string>
+    <string name="playlists_activity_description">Presents user defined playlists using table view layout. Also when one of the playlists are tapped, detail activity must be presenting.</string>
+    <string name="playlist_detail_button_title">Playlist detail</string>
+    <string name="playlist_detail_activity_title">Playlist Detail</string>
+    <string name="playlist_detail_description">Presents songs that in the playlist. Play the song when one of them is being tapped.</string>
+    <string name="artist_detail_activity_title">Artist Detail</string>
+    <string name="album_detail_activity_title">Album Detail</string>
+    <string name="song_detail_activity_title">Song Detail</string>
+    <string name="artist_detail_button_title">Artist detail</string>
+    <string name="album_detail_button_title">Album detail</string>
+    <string name="song_detail_button_title">Song detail</string>
+    <string name="artists_activity_description">Presents artists that in the user music library. When one of them tapped detail activity is presenting.</string>
+    <string name="artist_detail_description">Presents a small bio information about the artist, avatar image, all it\'s tracks that in the user music library.\nWhen one of the tracks tapped start playing the song.</string>
+    <string name="albums_activity_description">Presents all albums that in the user music library.
+    \nPresenting album detail activity when one of the albums is selected.</string>
+    <string name="album_detail_activity_description">Presents detail information about the album: tracks, cover image, small description, year...
+    \nStart playing the song when one of the album tracks is selected.</string>
+    <string name="songs_activity_description">Presents all tracks that in the user music library.
+        \nStart playing the song when one of them is selected.</string>
+    <string name="now_playing_activity_description">Shows all detail information about the current playing song: name, album, length, artist, cover image.
+    \nAlso provides controls for start/pause song, adjust time, play next/previous song, shuffle all tracks, repeat all tracks or one.</string>
 </resources>

@@ -8,10 +8,53 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ivanmagda.musicalstructure.MainActivity">
+    tools:context=".ui.activity.LibraryActivity">
 
     <TextView
+        android:id="@+id/library_description_text_view"
+        style="@style/DescriptionTextView"
+        android:text="@string/library_activity_description" />
+
+    <Button
+        android:id="@+id/la_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_below="@+id/library_description_text_view"
+        android:layout_marginBottom="16dp"
+        android:text="@string/search_button_title" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/la_search_button"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/playlists_button"
+            style="@style/ActivityActionButton"
+            android:text="@string/playlists_button_title" />
+
+        <Button
+            android:id="@+id/artists_button"
+            style="@style/ActivityActionButton"
+            android:text="@string/artists_button_title" />
+
+        <Button
+            android:id="@+id/albums_button"
+            style="@style/ActivityActionButton"
+            android:text="@string/albums_button_title" />
+
+        <Button
+            android:id="@+id/songs_button"
+            style="@style/ActivityActionButton"
+            android:text="@string/songs_button_title" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/now_playing_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/now_playing_button_title" />
 </RelativeLayout>
