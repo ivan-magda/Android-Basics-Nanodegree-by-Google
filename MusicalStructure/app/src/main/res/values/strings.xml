@@ -38,5 +38,6 @@
     <string name="songs_activity_description">Presents all tracks that in the user music library.
         \nStart playing the song when one of them is selected.</string>
     <string name="now_playing_activity_description">Shows all detail information about the current playing song: name, album, length, artist, cover image.
-    \nAlso provides controls for start/pause song, adjust time, play next/previous song, shuffle all tracks, repeat all tracks or one.</string>
+    \nAlso provides controls for start/pause song, adjust time, play next/previous song, shuffle all tracks, repeat all tracks or one.
+    \nIn order to implement this functionality need I can use MediaPlayer class. It has a functionality to start/stop playing audio files, seek to position, adjust volume and so on.</string>
 </resources>
