@@ -16,3 +16,5 @@ By the end of the course, you’ll build a language-learning app that you can sh
 
 Create an app to guide a user around a city or location of your choice!
 
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/tour_guide_1.png">
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/tour_guide_2.png">
