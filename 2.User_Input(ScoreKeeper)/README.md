@@ -11,3 +11,5 @@ By the end of this course, you will have learned how to make your app interactiv
 ### Court Counter App
 
 Implement an app to track scores between two teams within a basketball game.
+
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/score_keeper.png">
