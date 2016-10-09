@@ -12,3 +12,6 @@ By the end of this course, you will have learned how to make your app interactiv
 
 Design and implement a short quiz app about some topic you are familiar with.
 
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/quiz_1.png">
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/quiz_2.png">
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/quiz_3.png">
