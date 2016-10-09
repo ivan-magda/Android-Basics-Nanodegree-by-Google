@@ -1,8 +1,69 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.ivanmagda.tourguide.OverviewFragment">
+    tools:context="com.ivanmagda.tourguide.ui.fragment.OverviewFragment">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--Overview-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/HeaderTextView"
+                android:text="@string/overview" />
+
+            <TextView
+                style="@style/DetailTextView"
+                android:text="@string/blagoveshchensk_summary" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/CenterCropImageView"
+            android:src="@drawable/blagoveshchensk_header" />
+
+        <!--History-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/HeaderTextView"
+                android:text="@string/history" />
+
+            <TextView
+                style="@style/DetailTextView"
+                android:text="@string/blg_history" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/CenterCropImageView"
+            android:src="@drawable/blagoveshchensk_triumphal_arch" />
+
+        <!--Features-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/HeaderTextView"
+                android:text="@string/features" />
+
+            <TextView
+                style="@style/DetailTextView"
+                android:text="@string/blagoveshchensk_features" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

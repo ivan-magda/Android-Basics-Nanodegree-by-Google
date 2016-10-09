@@ -1,9 +1,12 @@
-package com.ivanmagda.tourguide;
+package com.ivanmagda.tourguide.ui.activity;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
+import com.ivanmagda.tourguide.R;
+import com.ivanmagda.tourguide.model.adapter.CityFragmentPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

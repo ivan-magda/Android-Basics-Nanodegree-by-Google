@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/category_image_view"
+        android:layout_width="@dimen/category_image_view_height"
+        android:layout_height="@dimen/category_image_view_height"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        tools:src="@drawable/food" />
+
+    <TextView
+        android:id="@+id/category_text_view"
+        style="@style/TextViewBaseListItem"
+        android:layout_gravity="center_vertical"
+        tools:text="Nighlife" />
+
+</LinearLayout>

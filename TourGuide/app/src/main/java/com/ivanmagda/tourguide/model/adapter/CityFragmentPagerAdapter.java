@@ -1,19 +1,23 @@
-package com.ivanmagda.tourguide;
+package com.ivanmagda.tourguide.model.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-class CityFragmentPagerAdapter extends FragmentPagerAdapter {
+import com.ivanmagda.tourguide.R;
+import com.ivanmagda.tourguide.ui.fragment.OverviewFragment;
+import com.ivanmagda.tourguide.ui.fragment.CategoriesFragment;
+
+public class CityFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private static final int PAGES_COUNT = 2;
-    private static final int OVERVIEW_PAGE = 0;
-    private static final int PLACES_PAGE = 1;
+    private static final int PLACES_PAGE = 0;
+    private static final int OVERVIEW_PAGE = 1;
 
     private Context mContext;
 
-    CityFragmentPagerAdapter(Context context, FragmentManager fm) {
+    public CityFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         this.mContext = context;
     }
@@ -24,7 +28,7 @@ class CityFragmentPagerAdapter extends FragmentPagerAdapter {
             case OVERVIEW_PAGE:
                 return new OverviewFragment();
             case PLACES_PAGE:
-                return new PlacesFragment();
+                return new CategoriesFragment();
             default:
                 return null;
         }

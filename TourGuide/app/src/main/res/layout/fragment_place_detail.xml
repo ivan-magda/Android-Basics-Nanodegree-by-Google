@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context="com.ivanmagda.tourguide.ui.fragment.PlaceDetailFragment">
+
+    <ImageView
+        android:id="@+id/place_image_view"
+        style="@style/CenterCropImageView"
+        android:layout_marginBottom="@dimen/image_view_margin_bottom"
+        tools:src="@drawable/blagoveshchensk_header" />
+
+    <TextView
+        android:id="@+id/place_description_text_view"
+        style="@style/PlaceDescriptionTextView"
+        tools:text="Description goes here." />
+
+
+</LinearLayout>

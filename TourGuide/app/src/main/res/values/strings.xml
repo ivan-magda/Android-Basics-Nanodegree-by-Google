@@ -3,4 +3,50 @@
     <string name="main_activity_title">Blagoveshchensk</string>
     <string name="overview_page_title">Overview</string>
     <string name="places_page_title">Places</string>
+
+    <string name="blagoveshchensk_summary">Is a city and the administrative center of Amur Oblast, Russia, located at the confluence of the Amur and Zeya Rivers, opposite to the Chinese city of Heihe.</string>
+    <string name="blg_history">The early residents of both sides of the Amur in the region of today\'s Blagoveshchensk were the Daurs and Duchers. An early settlement in the area of today\'s Blagoveshchensk was the Ducher town whose name was reported by the Russian explorer Yerofey Khabarov as Aytyun in 1652; it has been identified with what is currently known to the archaeologists as the Grodekovo site, after the nearby village of Grodekovo.</string>
+    <string name="blagoveshchensk_features">Blagoveshchensk is the only administrative center in Russia located on the state border. Blagoveshchensk and Heihe (China) are separated by the Amur River, the width of the river is about 800 meters here. The cities have a visa-free regime forming a free-trade zone. Local Chinese community is one of the largest in Russia. The community helps Chinese to legalize in Russia. Also, it builds a lot of new buildings for various purposes. The suburb “Severny” offers low-price habitation for city newcomers. Blagoveshchensk State Pedagogical University and Amur State University are situated in the city. Much of the population of Blagoveshchensk today consists of descendants of peasant settlers. The city has a continental variant of a temperate monsoon climate. The average temperature in January is minus 21.5 degrees Celsius, in July - plus 21.8 degrees C.</string>
+
+    <string name="overview">Overview</string>
+    <string name="history">History</string>
+    <string name="features">Features</string>
+
+
+    <string name="beletazh_description">Great service, well-trained waiters, tasty food, inexpensive (lunch for 250 rubles), nice snacks for tea for free. Very nice atmosphere</string>
+    <string name="yaposha_name">Sushi-bar Yaposha</string>
+    <string name="beletazh_name">Beletazh</string>
+    <string name="yaposha_description">Japanese cuisine - at the highest level, rolls, soup, ice cream for dessert - all very tasty! Mental institution!</string>
+    <string name="ani_name">The restaurant of Armenian food \'Ani\'</string>
+    <string name="ani_description">Best in Blagoveshchensk. Super delicious food, service at the highest level, individual approach to the wishes of the client, reasonable prices.</string>
+    <string name="boulangerie_name">Boulangerie</string>
+    <string name="boulangerie_description">Very cute interior. Smells delicious to begin with, and reasonable prices.</string>
+    <string name="coffee_shop_on_the_big_name">A Coffee Shop On The Big</string>
+    <string name="coffee_shop_on_the_big_description">The staff are professionals) will always help with advice and coffee) the Public is excellent in the evenings.Coffee is the most delicious in the city</string>
+    <string name="chikofsky_name">Chikofsky</string>
+    <string name="chikofsky_description">Original design, cozy atmosphere, liked the lamps. Delicious tea."</string>
+    <string name="bocado_name"><![CDATA[BOCADO Coffee & Tea]]></string>
+    <string name="bocado_description">Small cozy shop with outdoor tables. Ideal for coffee. It\'s amazing!</string>
+    <string name="c2_name">Night club C2</string>
+    <string name="c2_description">We had such an amazing night launching VIOLENT LIPS @ c2!! Enjoy ladies and come by the shop tomorrow :)</string>
+    <string name="schweik_name">At Schweik</string>
+    <string name="schweik_description">Very cool restaurant! All tasty and healthy. I am particularly pleased that there are Exit Menus.And by the way very tasty Caesar</string>
+    <string name="billini_name">Billini</string>
+    <string name="billini_description">The best hookah in town in my opinion) Kitchen approx. the Service at the highest level, all for the customer. A large wine list. You can have a blast at the karaoke and at the same time relax in a calm atmosphere. Two rooms.</string>
+    <string name="stadium_amur_name">Stadium Amur</string>
+    <string name="stadium_amur_description">Sport stadium of the Blagoveshchensk</string>
+    <string name="cinema_blg_name">Cinema Blagoveshchensk</string>
+    <string name="cinema_blg_description">Good cinema. Great sound. 5 rooms.</string>
+    <string name="museum_name">Local history museum</string>
+    <string name="museum_description">A nice Museum. Exhibitions change very frequently. A 3.5 on a 5 point scale.</string>
+    <string name="pervomayskiy_park_name">Pervomayskiy Park</string>
+    <string name="pervomayskiy_park_description">Very green. The most favorite destination in my childhood!</string>
+    <string name="theatre_name">Drama Theatre of the Blagoveshchensk</string>
+    <string name="theatre_description">Excellent performances!</string>
+    <string name="benetton_name">Benetton</string>
+    <string name="benetton_description">Favorite store! Very well laid out interior and polite sellers that do not interfere with a choice to make!</string>
+    <string name="chocolate_name">Coffee shop \'Chocolate\'</string>
+    <string name="chocolate_description">Delicious, cozy, friendly service, but, as many write, and teach the waiters to keep track of customers who are required quickly approach, you have time to search out the waiter to call!</string>
+    <string name="free_time_name">Free Time</string>
+    <string name="free_time_description">In my opinion the best in town Fast Food, everything is always fresh, very tasty twisters any \"complete\". The service is very quick and polite. All lovers of a quick bite to eat - I advise!</string>
 </resources>

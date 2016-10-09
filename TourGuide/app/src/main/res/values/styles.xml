@@ -15,11 +15,50 @@
         <item name="tabBackground">@color/colorPrimary</item>
         <item name="tabIndicatorHeight">@dimen/tab_indicator_height</item>
         <item name="tabTextAppearance">@style/CategoryTabTextAppearance</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMaxWidth">0dp</item>
     </style>
 
     <!-- Text appearance style for a category tab -->
     <style name="CategoryTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="HeaderTextView" parent="JustifyTextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorDivided</item>
+        <item name="android:layout_marginBottom">@dimen/header_text_view_margin_bottom</item>
+    </style>
+
+    <style name="DetailTextView" parent="JustifyTextView">
+        <item name="android:textColor">@color/colorTextSecondary</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="PlaceDescriptionTextView" parent="JustifyTextView">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="JustifyTextView">
+        <item name="android:gravity">left|right</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CenterCropImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/image_view_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <!--List items-->
+    <style name="TextViewBaseListItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>
