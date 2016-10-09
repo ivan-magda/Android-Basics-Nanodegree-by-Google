@@ -13,3 +13,5 @@ By the end of this course, you will have learned how to build an app’s layout 
 ### Build a Single Screen App
 
 Design and implement a simple app that displays information about a small business.
+
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/run_club.png">
