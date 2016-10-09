@@ -16,3 +16,4 @@ By the end of the course, you’ll build a language-learning app that you can sh
 
 Architect the user experience and technical design of an app to play music for a user.
 
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/musical_structure.png">
