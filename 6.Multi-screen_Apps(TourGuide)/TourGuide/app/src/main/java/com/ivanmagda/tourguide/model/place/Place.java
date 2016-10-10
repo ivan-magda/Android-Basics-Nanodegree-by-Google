@@ -108,8 +108,8 @@ public class Place implements Serializable {
                 new Place(context.getString(R.string.benetton_name),
                         context.getString(R.string.benetton_description),
                         R.drawable.benetton),
-                new Place("Shopping Mall Ostrova",
-                        "Decent Shopping Mall, great shopping. The presence of a food court and entertainment happy.",
+                new Place(context.getString(R.string.ostrova_name),
+                        context.getString(R.string.ostrova_description),
                         R.drawable.ostrova)
         };
     }

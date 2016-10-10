@@ -49,4 +49,12 @@
     <string name="chocolate_description">Delicious, cozy, friendly service, but, as many write, and teach the waiters to keep track of customers who are required quickly approach, you have time to search out the waiter to call!</string>
     <string name="free_time_name">Free Time</string>
     <string name="free_time_description">In my opinion the best in town Fast Food, everything is always fresh, very tasty twisters any \"complete\". The service is very quick and polite. All lovers of a quick bite to eat - I advise!</string>
+    <string name="ostrova_name">Shopping Mall Ostrova</string>
+    <string name="ostrova_description">Decent Shopping Mall, great shopping. The presence of a food court and entertainment happy.</string>
+    <string name="food_category_name">Food</string>
+    <string name="coffee_category_name">Coffee</string>
+    <string name="nightlife_category_name">Nightlife</string>
+    <string name="fun_category_name">Fun</string>
+    <string name="shopping_category_name">Shopping</string>
+    <string name="breakfast_category_name">Breakfast</string>
 </resources>

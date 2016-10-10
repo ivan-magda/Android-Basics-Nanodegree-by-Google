@@ -51,12 +51,18 @@ public class Category implements Serializable {
 
     public static Category[] allCategories(Context context) {
         return new Category[]{
-                new Category("Food", Place.foodPlaces(context), R.drawable.food),
-                new Category("Coffee", Place.coffeePlaces(context), R.drawable.coffee),
-                new Category("Nightlife", Place.nightlifePlaces(context), R.drawable.nightlife),
-                new Category("Fun", Place.funPlaces(context), R.drawable.fun),
-                new Category("Shopping", Place.shoppingPlaces(context), R.drawable.shopping),
-                new Category("Breakfast", Place.breakfastPlaces(context), R.drawable.pizza)
+                new Category(context.getString(R.string.food_category_name),
+                        Place.foodPlaces(context), R.drawable.food),
+                new Category(context.getString(R.string.coffee_category_name),
+                        Place.coffeePlaces(context), R.drawable.coffee),
+                new Category(context.getString(R.string.nightlife_category_name),
+                        Place.nightlifePlaces(context), R.drawable.nightlife),
+                new Category(context.getString(R.string.fun_category_name),
+                        Place.funPlaces(context), R.drawable.fun),
+                new Category(context.getString(R.string.shopping_category_name),
+                        Place.shoppingPlaces(context), R.drawable.shopping),
+                new Category(context.getString(R.string.breakfast_category_name),
+                        Place.breakfastPlaces(context), R.drawable.pizza)
         };
     }
 

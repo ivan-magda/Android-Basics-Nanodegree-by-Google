@@ -27,7 +27,7 @@
 
         <ImageView
             style="@style/CenterCropImageView"
-            android:src="@drawable/blagoveshchensk_header" />
+            android:src="@drawable/blg_header" />
 
         <!--History-->
         <LinearLayout
@@ -47,7 +47,7 @@
 
         <ImageView
             style="@style/CenterCropImageView"
-            android:src="@drawable/blagoveshchensk_triumphal_arch" />
+            android:src="@drawable/triump_arch" />
 
         <!--Features-->
         <LinearLayout
