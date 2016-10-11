@@ -15,3 +15,8 @@ By the end of the course, you’ll build an app that gets you up to date earthqu
 ### Book Listing App
 
 Create an app to list the published books on a given topic using the Google Books API.
+
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/book_listing_list.png" 
+width="270", height="480" >
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/book_listing_search.png" 
+width="270", height="480" >
