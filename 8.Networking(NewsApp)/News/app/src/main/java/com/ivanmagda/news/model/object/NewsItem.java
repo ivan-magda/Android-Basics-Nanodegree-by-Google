@@ -1,18 +1,17 @@
 package com.ivanmagda.news.model.object;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class NewsItem {
 
     private String title;
     private String sectionName;
     private String url;
+    private Author[] authors;
 
-    public NewsItem(String title, String sectionName, String url) {
+    public NewsItem(String title, String sectionName, String url, Author[] authors) {
         this.title = title;
         this.sectionName = sectionName;
         this.url = url;
+        this.authors = authors;
     }
 
     public String getTitle() {
@@ -27,8 +26,8 @@ public class NewsItem {
         return url;
     }
 
-    public URL getWebUrl() throws MalformedURLException {
-        return new URL(url);
+    public Author[] getAuthors() {
+        return authors;
     }
 
 }

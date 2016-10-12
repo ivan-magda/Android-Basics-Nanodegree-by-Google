@@ -31,6 +31,7 @@ public class GuardianApiClient extends SimpleHttpApiClient {
             params.put("api-key", API_KEY);
             params.put("order-by", "newest");
             params.put("page-size", "200");
+            params.put("show-tags", "contributor");
 
             return params;
         }

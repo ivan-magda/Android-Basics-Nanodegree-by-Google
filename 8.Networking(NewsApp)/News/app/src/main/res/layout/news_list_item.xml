@@ -15,9 +15,15 @@
         tools:text="Bangladesh v England: third and deciding ODI – live!" />
 
     <TextView
+        android:id="@+id/author_text_view"
+        style="@style/NewsItemDetailsTextView"
+        android:textAllCaps="false"
+        tools:text="Author" />
+
+    <TextView
         android:id="@+id/section_text_view"
         style="@style/NewsItemDetailsTextView"
-        android:paddingTop="2dp"
+        android:layout_width="wrap_content"
         tools:text="Sport" />
 
 </LinearLayout>
