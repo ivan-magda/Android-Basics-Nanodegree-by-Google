@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">News</string>
-    <string name="main_activity_title">Recent News</string>
+    <string name="news_feed_activity_title">Recent News</string>
+
+    <string name="list_view_empty_message">No news found.</string>
+    <string name="no_internet_connection">No internet connection.</string>
+
 </resources>

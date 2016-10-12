@@ -1,6 +1,8 @@
-package com.ivanmagda.news.model;
+package com.ivanmagda.news.model.parser;
 
 import android.util.Log;
+
+import com.ivanmagda.news.model.object.NewsItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

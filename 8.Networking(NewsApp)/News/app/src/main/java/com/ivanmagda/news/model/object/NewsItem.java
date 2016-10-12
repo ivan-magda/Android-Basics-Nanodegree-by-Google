@@ -1,4 +1,4 @@
-package com.ivanmagda.news.model;
+package com.ivanmagda.news.model.object;
 
 import java.net.MalformedURLException;
 import java.net.URL;

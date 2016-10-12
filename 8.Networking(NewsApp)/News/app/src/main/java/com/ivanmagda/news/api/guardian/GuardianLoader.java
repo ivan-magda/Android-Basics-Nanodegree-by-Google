@@ -3,7 +3,7 @@ package com.ivanmagda.news.api.guardian;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.ivanmagda.news.model.NewsItem;
+import com.ivanmagda.news.model.object.NewsItem;
 
 import java.util.ArrayList;
 

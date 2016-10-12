@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/news_list_view_padding_top"
+    android:paddingLeft="@dimen/news_list_view_padding_left"
+    android:paddingRight="@dimen/news_list_view_padding_left"
+    android:paddingTop="@dimen/news_list_view_padding_top">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        style="@style/NewsItemTitleTextView"
+        tools:text="Bangladesh v England: third and deciding ODI – live!" />
+
+    <TextView
+        android:id="@+id/section_text_view"
+        style="@style/NewsItemDetailsTextView"
+        android:paddingTop="2dp"
+        tools:text="Sport" />
+
+</LinearLayout>

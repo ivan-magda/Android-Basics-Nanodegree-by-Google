@@ -2,8 +2,8 @@ package com.ivanmagda.news.api.guardian;
 
 import com.ivanmagda.news.api.HttpApiResource;
 import com.ivanmagda.news.api.SimpleHttpApiClient;
-import com.ivanmagda.news.model.NewsItem;
-import com.ivanmagda.news.model.NewsItemParser;
+import com.ivanmagda.news.model.object.NewsItem;
+import com.ivanmagda.news.model.parser.NewsItemParser;
 import com.ivanmagda.news.util.UrlUtils;
 
 import java.util.ArrayList;
@@ -17,17 +17,22 @@ public class GuardianApiClient extends SimpleHttpApiClient {
     private static final HttpApiResource RECENT_NEWS_RESOURCE = new HttpApiResource() {
         @Override
         public String url() {
-            HashMap<String, Object> params = new HashMap<>(3);
-            params.put("api-key", API_KEY);
-            params.put("order-by", "newest");
-            params.put("page-size", "200");
-
-            return UrlUtils.buildUrlWithParameters(BASE_URL, params);
+            return UrlUtils.buildUrlWithParameters(BASE_URL, methodParameters());
         }
 
         @Override
         public String httpMethod() {
             return "GET";
+        }
+
+        @Override
+        public HashMap<String, Object> methodParameters() {
+            HashMap<String, Object> params = new HashMap<>(3);
+            params.put("api-key", API_KEY);
+            params.put("order-by", "newest");
+            params.put("page-size", "200");
+
+            return params;
         }
     };
 
@@ -41,4 +46,5 @@ public class GuardianApiClient extends SimpleHttpApiClient {
         String json = fetchResource(RECENT_NEWS_RESOURCE);
         return NewsItemParser.parseItems(json);
     }
+
 }
