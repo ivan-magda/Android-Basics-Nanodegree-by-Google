@@ -1,4 +1,4 @@
-package com.ivanmagda.news.api;
+package com.ivanmagda.news.api.client;
 
 import java.util.HashMap;
 

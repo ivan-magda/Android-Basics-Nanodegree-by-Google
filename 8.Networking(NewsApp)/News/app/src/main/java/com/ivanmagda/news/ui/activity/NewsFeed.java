@@ -1,4 +1,4 @@
-package com.ivanmagda.news.ui;
+package com.ivanmagda.news.ui.activity;
 
 import android.app.LoaderManager;
 import android.content.Intent;

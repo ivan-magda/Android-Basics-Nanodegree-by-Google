@@ -1,7 +1,7 @@
 package com.ivanmagda.news.api.guardian;
 
-import com.ivanmagda.news.api.HttpApiResource;
-import com.ivanmagda.news.api.SimpleHttpApiClient;
+import com.ivanmagda.news.api.client.HttpApiResource;
+import com.ivanmagda.news.api.client.SimpleHttpApiClient;
 import com.ivanmagda.news.model.object.NewsItem;
 import com.ivanmagda.news.model.parser.NewsItemParser;
 import com.ivanmagda.news.util.UrlUtils;
