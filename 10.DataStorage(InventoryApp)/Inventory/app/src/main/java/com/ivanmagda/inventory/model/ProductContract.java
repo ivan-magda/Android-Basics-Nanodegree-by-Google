@@ -16,7 +16,7 @@ public class ProductContract {
      * content authority is the package name for the app, which is guaranteed to be unique on the
      * device.
      */
-    public static final String CONTENT_AUTHORITY = "com.ivanmagda.inventory";
+    public static final String CONTENT_AUTHORITY = "com.ivanmagda.inventory.provider";
 
     /**
      * Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact
@@ -26,8 +26,8 @@ public class ProductContract {
 
     /**
      * Possible path (appended to base content URI for possible URI's)
-     * For instance, content://com.ivanmagda.inventory/products/ is a valid path for
-     * looking at inventory data. content://com.ivanmagda.inventory/staff/ will fail,
+     * For instance, content://com.ivanmagda.inventory.provider/products/ is a valid path for
+     * looking at inventory data. content://com.ivanmagda.inventory.provider/staff/ will fail,
      * as the ContentProvider hasn't been given any information on what to do with "staff".
      */
     public static final String PATH_PRODUCTS = "products";
