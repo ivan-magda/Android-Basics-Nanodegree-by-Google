@@ -159,7 +159,7 @@ public class ProductProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         switch (sUriMatcher.match(uri)) {
             case PRODUCTS:
-                insertProduct(uri, values);
+                return insertProduct(uri, values);
             default:
                 throw new IllegalArgumentException("Insertion is not supported for " + uri);
         }
@@ -298,7 +298,7 @@ public class ProductProvider extends ContentProvider {
 
     private boolean validatePicture(ContentValues values) {
         byte[] picture = values.getAsByteArray(ProductEntry.COLUMN_PRODUCT_PICTURE);
-        if (picture == null || picture.length == 0) {
+        if (picture != null && picture.length == 0) {
             throw new IllegalArgumentException("Product requires a picture.");
         }
         return true;

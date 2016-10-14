@@ -54,7 +54,7 @@ public class ProductDbHelper extends SQLiteOpenHelper {
                     ProductEntry.COLUMN_PRODUCT_PRICE + " REAL" + NOT_NULL_ATR + COMMA_SEP +
                     ProductEntry.COLUMN_PRODUCT_QUANTITY + INTEGER_TYPE + NOT_NULL_ATR + COMMA_SEP +
                     ProductEntry.COLUMN_PRODUCT_SUPPLIER + TEXT_TYPE + NOT_NULL_ATR + COMMA_SEP +
-                    ProductEntry.COLUMN_PRODUCT_PICTURE + " BLOB" + NOT_NULL_ATR + COMMA_SEP +
+                    ProductEntry.COLUMN_PRODUCT_PICTURE + " BLOB" + COMMA_SEP +
                     ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY + INTEGER_TYPE + NOT_NULL_ATR + DEFAULT_ATR + " 0" +
                     ");";
 
