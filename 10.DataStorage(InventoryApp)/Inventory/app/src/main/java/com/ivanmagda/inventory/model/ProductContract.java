@@ -93,14 +93,14 @@ public class ProductContract {
          * <p/>
          * Type: BLOB
          */
-        public final static String COLUMN_INVENTORY_PICTURE = "picture";
+        public final static String COLUMN_PRODUCT_PICTURE = "picture";
 
         /**
          * Sold quantity of the product.
          * <p/>
          * Type: INTEGER
          */
-        public final static String COLUMN_INVENTORY_SOLD_QUANTITY = "sold_quantity";
+        public final static String COLUMN_PRODUCT_SOLD_QUANTITY = "sold_quantity";
     }
 
 }
