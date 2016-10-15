@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <!--Product description section-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true">
+
+        <!--Product name.-->
+        <TextView
+            android:id="@+id/name"
+            style="@style/TitleTextView"
+            tools:text="Name" />
+
+        <!--Product quantity.-->
+        <TextView
+            android:id="@+id/quantity"
+            style="@style/DetailTextView"
+            android:layout_alignBottom="@+id/name"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/name"
+            android:paddingLeft="@dimen/quantity_text_view_horizontal_padding"
+            android:gravity="center|right"
+            tools:text="24" />
+
+        <!--Product price-->
+        <TextView
+            android:id="@+id/price"
+            style="@style/DetailTextView"
+            android:layout_below="@+id/name"
+            tools:text="100$" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/sale_button"
+        android:layout_width="@dimen/sale_button_size"
+        android:layout_height="@dimen/sale_button_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_attach_money_black" />
+</RelativeLayout>

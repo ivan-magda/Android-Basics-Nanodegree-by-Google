@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ivanmagda.inventory.model;
+package com.ivanmagda.inventory.model.data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -33,7 +33,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.ivanmagda.inventory.model.ProductContract.ProductEntry;
+import com.ivanmagda.inventory.model.data.ProductContract.ProductEntry;
 
 /**
  * {@link ContentProvider} for Inventory app.

@@ -29,12 +29,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ivanmagda.inventory.R;
-import com.ivanmagda.inventory.model.ProductContract.ProductEntry;
+import com.ivanmagda.inventory.model.adapter.ProductCursorAdapter;
+import com.ivanmagda.inventory.model.data.ProductContract.ProductEntry;
 
 
 public class ProductsListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -44,20 +47,26 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
     // Identifies a particular Loader being used in this component.
     private static final int INVENTORY_LOADER = 0;
 
+    ProductCursorAdapter mCursorAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_products_list);
 
-        ((Button) findViewById(R.id.insert_product_data_button)).setOnClickListener(new View.OnClickListener() {
+        configureProductList();
+
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertProduct();
+                Log.v(LOG_TAG, "Fab pressed");
             }
         });
-
-        getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
+
+    /**
+     * Implement LoaderManager.LoaderCallbacks<Cursor>.
+     */
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -76,11 +85,38 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        mCursorAdapter.swapCursor(cursor);
     }
 
+    /*
+     * Invoked when the CursorLoader is being reset. For example, this is
+     * called if the data in the provider changes and the Cursor becomes stale.
+     */
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        // This is called when the last Cursor provided to onLoadFinished()
+        // above is about to be closed.  We need to make sure we are no
+        // longer using it.
+        mCursorAdapter.swapCursor(null);
+    }
+
+    /**
+     * Helper methods.
+     */
+
+    private void configureProductList() {
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        mCursorAdapter = new ProductCursorAdapter(this, null);
+        listView.setAdapter(mCursorAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(LOG_TAG, "Did select item at index " + position);
+            }
+        });
+
+        getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
 
     /**

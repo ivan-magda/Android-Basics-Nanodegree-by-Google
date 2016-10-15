@@ -17,7 +17,7 @@
         </activity>
 
         <provider
-            android:name=".model.ProductProvider"
+            android:name=".model.data.ProductProvider"
             android:authorities="com.ivanmagda.inventory.provider"
             android:exported="false" />
     </application>

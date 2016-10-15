@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ivanmagda.inventory.model;
+package com.ivanmagda.inventory.model.data;
 
 import android.content.ContentResolver;
 import android.net.Uri;
