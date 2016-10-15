@@ -20,6 +20,18 @@
             android:name=".model.data.ProductProvider"
             android:authorities="com.ivanmagda.inventory.provider"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.ProductEditor"
+            android:parentActivityName=".ui.ProductsListActivity"
+            android:theme="@style/EditorTheme">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ProductsListActivity" />
+        </activity>
+
     </application>
 
 </manifest>

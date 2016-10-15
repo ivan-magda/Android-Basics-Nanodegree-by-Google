@@ -26,6 +26,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -65,7 +66,7 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v(LOG_TAG, "Fab pressed");
+                presentProductEditor(null);
             }
         });
     }
@@ -137,23 +138,30 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
     private void configureProductList() {
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty_view));
-        mCursorAdapter = new ProductCursorAdapter(this, null);
-        listView.setAdapter(mCursorAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri productUri = ContentUris.withAppendedId(ProductEntry.CONTENT_URI, id);
+                presentProductEditor(productUri);
+            }
+        });
 
+        mCursorAdapter = new ProductCursorAdapter(this, null);
         mCursorAdapter.setOnSaleButtonClickListener(new ProductCursorAdapter.OnSaleButtonClickListener() {
             @Override
             public void didPressSaleButtonForProduct(Product product) {
                 sellProduct(product);
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(LOG_TAG, "Did select item at index " + position);
-            }
-        });
+        listView.setAdapter(mCursorAdapter);
 
         getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
+    }
+
+    private void presentProductEditor(Uri productUri) {
+        Intent intent = new Intent(ProductsListActivity.this, ProductEditor.class);
+        intent.setData(productUri);
+        startActivity(intent);
     }
 
     /**
