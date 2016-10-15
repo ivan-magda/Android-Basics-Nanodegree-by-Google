@@ -8,4 +8,5 @@
 
     <!-- Margin around the floating action button in CatalogActivity -->
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="sale_button_margin_right">4dp</dimen>
 </resources>

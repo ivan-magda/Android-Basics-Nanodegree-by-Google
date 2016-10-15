@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Inventory</string>
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="action_delete_all_entries">Delete All Products</string>
+    <string name="delete_all_dialog_msg">Delete all products?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_empty_msg">There is nothing to delete</string>
+    <string name="delete_success_msg">Successfully deleted</string>
+    <string name="insert_success_msg">Successfully inserted</string>
+    <string name="empty_view_title_text">You have no products</string>
+    <string name="empty_view_subtitle_text">Get started by adding one</string>
 </resources>

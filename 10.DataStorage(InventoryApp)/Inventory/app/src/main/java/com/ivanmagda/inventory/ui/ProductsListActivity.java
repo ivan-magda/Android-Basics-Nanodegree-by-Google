@@ -24,12 +24,16 @@ package com.ivanmagda.inventory.ui;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -62,6 +66,27 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
                 Log.v(LOG_TAG, "Fab pressed");
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_products_list, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_insert_dummy_data:
+                insertProduct();
+                return true;
+            case R.id.action_delete_all_entries:
+                showDeleteConfirmationDialog();
+                return true;
+            default:
+                Log.e(LOG_TAG, "Unresolved action with id: " + item.getItemId());
+                return false;
+        }
     }
 
     /**
@@ -107,6 +132,7 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
 
     private void configureProductList() {
         ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setEmptyView(findViewById(R.id.empty_view));
         mCursorAdapter = new ProductCursorAdapter(this, null);
         listView.setAdapter(mCursorAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,7 +161,39 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
         // into the pets database table.
         // Receive the new content URI that will allow us to access Shovel's data in the future.
         Uri newUri = getContentResolver().insert(ProductEntry.CONTENT_URI, values);
-        Toast.makeText(this, "New row uri: " + newUri, Toast.LENGTH_SHORT).show();
+        Log.v(LOG_TAG, "New row uri " + newUri);
+        Toast.makeText(this, R.string.insert_success_msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showDeleteConfirmationDialog() {
+        if (mCursorAdapter.getCount() == 0) {
+            Toast.makeText(this, R.string.delete_empty_msg, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_all_dialog_msg);
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                deleteAllProducts();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null) dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void deleteAllProducts() {
+        int rowsDeleted = getContentResolver().delete(ProductEntry.CONTENT_URI, null, null);
+        Log.v(LOG_TAG, rowsDeleted + " rows deleted from inventory database");
+        Toast.makeText(this, R.string.delete_success_msg, Toast.LENGTH_SHORT).show();
     }
 
 }
