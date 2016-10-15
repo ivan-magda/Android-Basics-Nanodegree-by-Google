@@ -222,11 +222,11 @@ public class ProductProvider extends ContentProvider {
     public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         switch (sUriMatcher.match(uri)) {
             case PRODUCTS:
-                return updatePet(uri, values, selection, selectionArgs);
+                return updateProduct(uri, values, selection, selectionArgs);
             case PRODUCT_ID:
                 selection = ProductEntry._ID + "=?";
                 selectionArgs = new String[]{idStringFrom(uri)};
-                return updatePet(uri, values, selection, selectionArgs);
+                return updateProduct(uri, values, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }
@@ -237,7 +237,7 @@ public class ProductProvider extends ContentProvider {
      * specified in the selection and selection arguments (which could be 0 or 1 or more products).
      * Return the number of rows that were successfully updated.
      */
-    private int updatePet(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+    private int updateProduct(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_NAME)) validateName(values);
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_PRICE)) validatePrice(values);
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_QUANTITY)) validateQuantity(values);

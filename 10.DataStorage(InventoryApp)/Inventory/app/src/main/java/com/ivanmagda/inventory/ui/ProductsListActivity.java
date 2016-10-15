@@ -22,6 +22,7 @@
 package com.ivanmagda.inventory.ui;
 
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
@@ -42,6 +43,7 @@ import android.widget.Toast;
 import com.ivanmagda.inventory.R;
 import com.ivanmagda.inventory.model.adapter.ProductCursorAdapter;
 import com.ivanmagda.inventory.model.data.ProductContract.ProductEntry;
+import com.ivanmagda.inventory.model.object.Product;
 
 
 public class ProductsListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -101,9 +103,11 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
                         ProductEntry._ID,
                         ProductEntry.COLUMN_PRODUCT_NAME,
                         ProductEntry.COLUMN_PRODUCT_PRICE,
-                        ProductEntry.COLUMN_PRODUCT_QUANTITY
+                        ProductEntry.COLUMN_PRODUCT_QUANTITY,
+                        ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY
                 };
-                return new CursorLoader(this, ProductEntry.CONTENT_URI, projection, null, null, null);
+                String sort = ProductEntry._ID + " DESC";
+                return new CursorLoader(this, ProductEntry.CONTENT_URI, projection, null, null, sort);
             default:
                 return null;
         }
@@ -135,6 +139,13 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
         listView.setEmptyView(findViewById(R.id.empty_view));
         mCursorAdapter = new ProductCursorAdapter(this, null);
         listView.setAdapter(mCursorAdapter);
+
+        mCursorAdapter.setOnSaleButtonClickListener(new ProductCursorAdapter.OnSaleButtonClickListener() {
+            @Override
+            public void didPressSaleButtonForProduct(Product product) {
+                sellProduct(product);
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -151,10 +162,10 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
     private void insertProduct() {
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, "Shovel");
-        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, 9.99);
-        values.put(ProductEntry.COLUMN_PRODUCT_QUANTITY, 100);
+        values.put(ProductEntry.COLUMN_PRODUCT_PRICE, 10.99);
+        values.put(ProductEntry.COLUMN_PRODUCT_QUANTITY, 7);
         values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER, "vanyaland@mail.ru");
-        values.put(ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY, 2);
+        values.put(ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY, 0);
 
         // Insert a new row for Shovel into the provider using the ContentResolver.
         // Use the {@link ProductContract.ProductEntry#CONTENT_URI} to indicate that we want to insert
@@ -194,6 +205,23 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
         int rowsDeleted = getContentResolver().delete(ProductEntry.CONTENT_URI, null, null);
         Log.v(LOG_TAG, rowsDeleted + " rows deleted from inventory database");
         Toast.makeText(this, R.string.delete_success_msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void sellProduct(Product product) {
+        if (product.getQuantity() == 0) {
+            Toast.makeText(this, R.string.sale_product_empty_msg, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Uri uri = ContentUris.withAppendedId(ProductEntry.CONTENT_URI, product.getId());
+        ContentValues values = new ContentValues();
+        values.put(ProductEntry.COLUMN_PRODUCT_QUANTITY, product.getQuantity() - 1);
+        values.put(ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY, product.getSoldQuantity() + 1);
+
+        int updatedRows = getContentResolver().update(uri, values, null, null);
+        Toast.makeText(this,
+                (updatedRows != 0 ? R.string.sale_product_success : R.string.sale_product_fail_msg),
+                Toast.LENGTH_SHORT).show();
     }
 
 }

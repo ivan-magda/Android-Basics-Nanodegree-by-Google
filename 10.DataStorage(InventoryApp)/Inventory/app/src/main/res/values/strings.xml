@@ -10,4 +10,7 @@
     <string name="insert_success_msg">Successfully inserted</string>
     <string name="empty_view_title_text">You have no products</string>
     <string name="empty_view_subtitle_text">Get started by adding one</string>
+    <string name="sale_product_empty_msg">Could't sale, there is no items</string>
+    <string name="sale_product_fail_msg">Failed to sale product</string>
+    <string name="sale_product_success">Product successfully sold</string>
 </resources>
