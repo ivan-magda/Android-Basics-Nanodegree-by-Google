@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,52 +7,79 @@
     android:padding="@dimen/activity_horizontal_margin">
 
     <!--Product description section-->
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true">
+        android:layout_weight="2"
+        android:orientation="vertical">
 
         <!--Product name.-->
-        <TextView
-            android:id="@+id/name"
-            style="@style/TitleTextView"
-            tools:text="Name" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TitleTextView"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/DetailTextView"
+                tools:text="Shovel" />
+        </LinearLayout>
 
         <!--Product price-->
-        <TextView
-            android:id="@+id/price"
-            style="@style/DetailTextView"
-            android:layout_alignBottom="@+id/name"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/name"
-            android:gravity="center|right"
-            android:paddingLeft="@dimen/quantity_text_view_horizontal_padding"
-            tools:text="9.99$" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TitleTextView"
+                android:text="@string/price" />
+
+            <TextView
+                android:id="@+id/price"
+                style="@style/DetailTextView"
+                tools:text="$9.99" />
+        </LinearLayout>
 
         <!--Product quantity.-->
-        <TextView
-            android:id="@+id/quantity"
-            style="@style/DetailTextView"
-            android:layout_below="@+id/name"
-            tools:text="24" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TitleTextView"
+                android:text="@string/quantity" />
+
+            <TextView
+                android:id="@+id/quantity"
+                style="@style/DetailTextView"
+                tools:text="24" />
+        </LinearLayout>
 
         <!--Product sold quantity.-->
-        <TextView
-            android:id="@+id/sold_quantity"
-            style="@style/DetailTextView"
-            android:layout_below="@+id/name"
-            android:layout_toRightOf="@id/quantity"
-            android:paddingLeft="4dp"
-            tools:text="2" />
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TitleTextView"
+                android:text="@string/sold" />
+
+            <TextView
+                android:id="@+id/sold_quantity"
+                style="@style/DetailTextView"
+                tools:text="2" />
+        </LinearLayout>
+    </LinearLayout>
 
     <!--Sale button-->
     <Button
         android:id="@+id/sale_button"
         android:layout_width="@dimen/sale_button_size"
         android:layout_height="@dimen/sale_button_size"
-        android:layout_alignParentRight="true"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/sale_button_margin_left"
         android:background="@drawable/ic_attach_money_black" />
-</RelativeLayout>
+</LinearLayout>

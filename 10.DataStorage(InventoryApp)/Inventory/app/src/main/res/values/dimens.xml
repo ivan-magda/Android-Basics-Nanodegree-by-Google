@@ -15,4 +15,5 @@
     <dimen name="edit_category_padding">16dp</dimen>
     <dimen name="quantity_button_width">48dp</dimen>
     <dimen name="track_quantity_text_view_spacing">8dp</dimen>
+    <dimen name="sale_button_margin_left">16dp</dimen>
 </resources>

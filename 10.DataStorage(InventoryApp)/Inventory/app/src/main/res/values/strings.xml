@@ -64,4 +64,7 @@
     <string name="choose_image_failed_msg">Failed to choose image from gallery</string>
     <string name="change_picture_dialog_msg">Change picture?</string>
     <string name="change">Change</string>
+    <string name="quantity">Quantity</string>
+    <string name="sold">Sold</string>
+    <string name="price">Price</string>
 </resources>
