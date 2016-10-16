@@ -10,26 +10,38 @@
 
     <!--Picture Category-->
     <RelativeLayout
-        android:id="@+id/add_picture_empty_view"
+        android:id="@+id/container_product_picture"
         android:layout_width="match_parent"
         android:layout_height="@dimen/editor_activity_picture_height"
         android:background="@color/divider">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <!--Empty add picture view-->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@+id/add_picture_text_view"
-            android:src="@drawable/ic_add_a_photo_white" />
+            android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@+id/add_picture_text_view"
-            style="@style/TitleTextView"
-            android:layout_centerInParent="true"
-            android:paddingLeft="@dimen/text_margin"
-            android:text="@string/add_picture_empty_view_msg"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="#FFFFFF" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/add_picture_text_view"
+                android:src="@drawable/ic_add_a_photo_white" />
+
+            <TextView
+                android:id="@+id/add_picture_text_view"
+                style="@style/TitleTextView"
+                android:layout_centerInParent="true"
+                android:paddingLeft="@dimen/text_margin"
+                android:text="@string/add_picture_empty_view_msg"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="#FFFFFF" />
+        </RelativeLayout>
+
+        <!--Product image view-->
+        <ImageView
+            android:id="@+id/product_image_view"
+            style="@style/CenterCropImageView" />
     </RelativeLayout>
 
     <!-- Name Category -->

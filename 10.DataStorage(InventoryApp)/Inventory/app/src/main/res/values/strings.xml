@@ -61,4 +61,7 @@
     <string name="place_order_failed_msg">Select quantity that you want to request from the supplier</string>
     <string name="place_order_subject">"Inventory order for "</string>
     <string name="send_email_failed_msg">Could not send an email to the supplier</string>
+    <string name="choose_image_failed_msg">Failed to choose image from gallery</string>
+    <string name="change_picture_dialog_msg">Change picture?</string>
+    <string name="change">Change</string>
 </resources>

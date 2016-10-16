@@ -28,24 +28,32 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ivanmagda.inventory.R;
 import com.ivanmagda.inventory.model.data.ProductContract.ProductEntry;
 import com.ivanmagda.inventory.model.object.Product;
+import com.ivanmagda.inventory.util.ImageUtils;
 import com.ivanmagda.inventory.util.ProductUtils;
+
+import java.io.File;
 
 import static com.ivanmagda.inventory.ui.ProductEditor.EditorActivityMode.CREATE_NEW;
 import static com.ivanmagda.inventory.ui.ProductEditor.EditorActivityMode.EDIT;
@@ -55,7 +63,9 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     enum EditorActivityMode {EDIT, CREATE_NEW}
 
     private static final String LOG_TAG = ProductEditor.class.getSimpleName();
+
     private static final int PRODUCT_LOADER = 1;
+    private static final int CHOOSE_PICTURE_RESULT = 2;
 
     /**
      * Helps to understand in what mode activity started.
@@ -66,6 +76,11 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
      * Uri of the current editing product or null if add one.
      */
     private Uri mCurrentProductUri;
+
+    /**
+     * ImageView for presenting picture of the product.
+     */
+    private ImageView mProductImageView;
 
     /**
      * EditText field to enter the products's name.
@@ -98,7 +113,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     private TextView mReceiveQuantityTextView;
 
     private boolean mProductHasChanged = false;
-    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+    private View.OnTouchListener mProductChangesTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             mProductHasChanged = true;
@@ -117,6 +132,13 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_editor);
         configure();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CHOOSE_PICTURE_RESULT)
+            didFinishChooseImageFromGallery(resultCode, data);
     }
 
     @Override
@@ -206,6 +228,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     }
 
     private void findViews() {
+        mProductImageView = (ImageView) findViewById(R.id.product_image_view);
         mNameEditText = (EditText) findViewById(R.id.edit_product_name);
         mPriceEditText = (EditText) findViewById(R.id.edit_product_price);
         mQuantityEditText = (EditText) findViewById(R.id.edit_product_quantity);
@@ -215,17 +238,27 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     }
 
     private void setListeners() {
-        mNameEditText.setOnTouchListener(mTouchListener);
-        mPriceEditText.setOnTouchListener(mTouchListener);
-        mQuantityEditText.setOnTouchListener(mTouchListener);
-        mSupplierEmailEditText.setOnTouchListener(mTouchListener);
-        mSoldQuantityTextView.setOnTouchListener(mTouchListener);
-        mReceiveQuantityTextView.setOnTouchListener(mTouchListener);
+        mNameEditText.setOnTouchListener(mProductChangesTouchListener);
+        mPriceEditText.setOnTouchListener(mProductChangesTouchListener);
+        mQuantityEditText.setOnTouchListener(mProductChangesTouchListener);
+        mSupplierEmailEditText.setOnTouchListener(mProductChangesTouchListener);
+        mSoldQuantityTextView.setOnTouchListener(mProductChangesTouchListener);
+        mReceiveQuantityTextView.setOnTouchListener(mProductChangesTouchListener);
 
-        findViewById(R.id.decrement_sale_button).setOnTouchListener(mTouchListener);
-        findViewById(R.id.increment_sale_button).setOnTouchListener(mTouchListener);
-        findViewById(R.id.decrement_receive_button).setOnTouchListener(mTouchListener);
-        findViewById(R.id.increment_receive_button).setOnTouchListener(mTouchListener);
+        findViewById(R.id.decrement_sale_button).setOnTouchListener(mProductChangesTouchListener);
+        findViewById(R.id.increment_sale_button).setOnTouchListener(mProductChangesTouchListener);
+        findViewById(R.id.decrement_receive_button).setOnTouchListener(mProductChangesTouchListener);
+        findViewById(R.id.increment_receive_button).setOnTouchListener(mProductChangesTouchListener);
+        findViewById(R.id.container_product_picture).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProductHasChanged = true;
+                if (mProductImageView.getDrawable() == null)
+                    choosePictureFromGallery();
+                else
+                    showChangePictureConfirmationDialog();
+            }
+        });
     }
 
     /**
@@ -251,11 +284,54 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
         mQuantityEditText.setText(String.valueOf(product.getQuantity()));
         mSupplierEmailEditText.setText(product.getSupplier());
         mSoldQuantityTextView.setText(String.valueOf(product.getSoldQuantity()));
+
+        byte[] bytes = mProduct.getPicture();
+        if (bytes != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            mProductImageView.setImageBitmap(bitmap);
+        }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         mProduct = null;
+    }
+
+    /**
+     * Private helper method for choosing image from the gallery.
+     */
+    private void choosePictureFromGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(galleryIntent, CHOOSE_PICTURE_RESULT);
+    }
+
+    private void didFinishChooseImageFromGallery(int resultCode, Intent data) {
+        Toast failedToast = Toast.makeText(this, R.string.choose_image_failed_msg, Toast.LENGTH_LONG);
+        try {
+            if (resultCode == RESULT_OK && data != null) {
+                Uri selectedImage = data.getData();
+                String[] projection = {MediaStore.Images.Media.DATA};
+
+                Cursor cursor = getContentResolver().query(selectedImage, projection, null, null, null);
+                if (cursor != null) {
+                    int columnIndex = cursor.getColumnIndex(projection[0]);
+                    cursor.moveToFirst();
+                    File imageFile = new File(cursor.getString(columnIndex));
+                    cursor.close();
+
+                    Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+                    mProductImageView.setImageBitmap(bitmap);
+                } else {
+                    failedToast.show();
+                }
+            } else {
+                Toast.makeText(this, "You haven't picked Image", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "Failed to choose image", e);
+            failedToast.show();
+        }
     }
 
     /**
@@ -321,13 +397,11 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
         // Read from input text fields.
         String name = mNameEditText.getText().toString().trim();
         String supplier = mSupplierEmailEditText.getText().toString().trim();
+        byte[] picture = ImageUtils.bytesFromImageView(mProductImageView);
         String priceString = mPriceEditText.getText().toString().trim();
         double price = 0;
         String quantityString = mQuantityEditText.getText().toString().trim();
         int quantity = 0;
-
-        // TODO: put picture.
-        byte[] picture = null;
 
         int soldQuantity = 0;
         if (mActivityMode == EDIT) {
@@ -371,6 +445,26 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     /**
      * Build and show confirmation dialogs.
      */
+
+    private void showChangePictureConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.change_picture_dialog_msg);
+        builder.setPositiveButton(getString(R.string.change), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                choosePictureFromGallery();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (dialog != null) dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
     private void showUnsavedChangesDialog(DialogInterface.OnClickListener listener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
