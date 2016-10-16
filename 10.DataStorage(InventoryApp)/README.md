@@ -9,3 +9,11 @@ You'll also learn how to work with Content Providers, which help your data stora
 ### Inventory App
 
 Create an app to track the inventory of a retail store, including current stock and supplier information.
+
+### Screenshots
+
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/inventory_empty_state.png" >
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/inventory_list.png" >
+
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/inventory_create_new.png" >
+<img src="https://github.com/vanyaland/Android-Basics-Nanodegree-by-Google/blob/master/res/inventory_edit.png" >
