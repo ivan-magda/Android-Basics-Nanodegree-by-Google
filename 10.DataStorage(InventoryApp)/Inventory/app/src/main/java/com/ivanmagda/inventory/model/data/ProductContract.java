@@ -25,7 +25,7 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import com.ivanmagda.inventory.ui.ArrayUtils;
+import com.ivanmagda.inventory.util.ArrayUtils;
 
 public class ProductContract {
 

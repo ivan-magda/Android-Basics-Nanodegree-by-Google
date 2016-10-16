@@ -2,7 +2,7 @@
     <string name="app_name">Inventory</string>
 
     <!--Product list activity-->
-    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="action_insert_dummy_data">Insert Sample Product</string>
     <string name="action_delete_all_entries">Delete All Products</string>
 
     <string name="delete_all_dialog_msg">Delete all products?</string>
@@ -48,4 +48,14 @@
     <string name="plus_sign">+</string>
 
     <string name="action_order_more">Order More</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
+    <string name="delete_dialog_msg">Delete this product?</string>
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+    <string name="editor_delete_product_successful">Product successfully deleted</string>
+    <string name="editor_insert_product_failed">Error with saving product</string>
+    <string name="editor_insert_product_successful">Product successfull saved</string>
+    <string name="editor_edit_product_successful">Product successfully updated</string>
+    <string name="editor_edit_product_failed">Failed to update product</string>
 </resources>

@@ -136,16 +136,18 @@
             <Button
                 android:id="@+id/decrement_sale_button"
                 style="@style/TrackQuantityLhsButtonStyle"
+                android:onClick="trackQuantityButtonPressed"
                 android:text="@string/minus_sign" />
 
             <TextView
-                android:id="@+id/quantity_sale_text_view"
+                android:id="@+id/sold_quantity_text_view"
                 style="@style/TrackQuantityTextViewStyle"
                 android:text="@string/track_quantity_text_view_default" />
 
             <Button
                 android:id="@+id/increment_sale_button"
                 style="@style/TrackQuantityRhsButtonStyle"
+                android:onClick="trackQuantityButtonPressed"
                 android:text="@string/plus_sign" />
         </LinearLayout>
     </LinearLayout>
@@ -169,18 +171,20 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/decrement_shipment_button"
+                android:id="@+id/decrement_receive_button"
                 style="@style/TrackQuantityLhsButtonStyle"
+                android:onClick="trackQuantityButtonPressed"
                 android:text="@string/minus_sign" />
 
             <TextView
-                android:id="@+id/quantity_shipment_text_view"
+                android:id="@+id/receive_quantity_text_view"
                 style="@style/TrackQuantityTextViewStyle"
                 android:text="@string/track_quantity_text_view_default" />
 
             <Button
-                android:id="@+id/increment_shipment_button"
+                android:id="@+id/increment_receive_button"
                 style="@style/TrackQuantityRhsButtonStyle"
+                android:onClick="trackQuantityButtonPressed"
                 android:text="@string/plus_sign" />
         </LinearLayout>
     </LinearLayout>

@@ -70,7 +70,7 @@ public class ProductCursorAdapter extends CursorAdapter {
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
 
         // Extract properties from cursor.
-        final Product product = ProductUtils.productFromCursor(cursor);
+        final Product product = ProductUtils.fromCursor(cursor);
         String quantityString = String.valueOf(product.getQuantity());
         String soldQuantityString = String.valueOf(product.getSoldQuantity());
         String priceString = CurrencyUtils.currencyString(product.getPrice());

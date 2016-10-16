@@ -24,113 +24,208 @@ package com.ivanmagda.inventory.model.object;
 public class Product {
 
     /**
-     * Product id.
+     * Product mId.
      */
-    private int id;
+    private int mId;
 
     /**
-     * Product name.
+     * Product mName.
      */
-    private String name;
+    private String mName;
 
     /**
-     * Product price.
+     * Product mPrice.
      */
-    private double price;
+    private double mPrice;
 
     /**
-     * Product quantity.
+     * Product mQuantity.
      */
-    private int quantity;
+    private int mQuantity;
 
     /**
-     * Product sold quantity.
+     * Product sold mQuantity.
      */
-    private int soldQuantity;
+    private int mSoldQuantity;
 
     /**
-     * Product supplier email address.
+     * Product mSupplier email address.
      */
-    private String supplier;
+    private String mSupplier;
 
     /**
-     * Product picture.
+     * Product mPicture.
      */
-    private byte[] picture;
+    private byte[] mPicture;
+
+    /**
+     * Receive quantity from the supplier.
+     */
+    private int mReceiveQuantity;
 
     public Product(int id, String name, double price, int quantity, int soldQuantity, String supplier, byte[] picture) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.soldQuantity = soldQuantity;
-        this.supplier = supplier;
-        this.picture = picture;
+        this.mId = id;
+        this.mName = name;
+        this.mPrice = price;
+        this.mQuantity = quantity;
+        this.mSoldQuantity = soldQuantity;
+        this.mSupplier = supplier;
+        this.mPicture = picture;
     }
 
     public Product(int id, String name, double price, int quantity, int soldQuantity, String supplier) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.soldQuantity = soldQuantity;
-        this.supplier = supplier;
+        this.mId = id;
+        this.mName = name;
+        this.mPrice = price;
+        this.mQuantity = quantity;
+        this.mSoldQuantity = soldQuantity;
+        this.mSupplier = supplier;
     }
 
+    /**
+     * Id.
+     */
+
     public int getId() {
-        return id;
+        return mId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.mId = id;
     }
 
+    /**
+     * Name.
+     */
+
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
+    /**
+     * Price.
+     */
+
     public double getPrice() {
-        return price;
+        return mPrice;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.mPrice = price;
     }
 
+    /**
+     * Quantity.
+     */
+
     public int getQuantity() {
-        return quantity;
+        return mQuantity;
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        if (isValidQuantity(quantity))
+            this.mQuantity = quantity;
     }
 
+    /**
+     * Sold quantity.
+     */
+
     public int getSoldQuantity() {
-        return soldQuantity;
+        return mSoldQuantity;
     }
 
     public void setSoldQuantity(int soldQuantity) {
-        this.soldQuantity = soldQuantity;
+        if (isValidQuantity(soldQuantity))
+            this.mSoldQuantity = soldQuantity;
     }
 
+    /**
+     * Receive quantity.
+     */
+
+    public int getReceiveQuantity() {
+        return mReceiveQuantity;
+    }
+
+    public void setReceiveQuantity(int receiveQuantity) {
+        if (isValidQuantity(receiveQuantity))
+            this.mReceiveQuantity = receiveQuantity;
+    }
+
+    /**
+     * Supplier.
+     */
+
     public String getSupplier() {
-        return supplier;
+        return mSupplier;
     }
 
     public void setSupplier(String supplier) {
-        this.supplier = supplier;
+        this.mSupplier = supplier;
     }
 
+    /**
+     * Picture.
+     */
+
     public byte[] getPicture() {
-        return picture;
+        return mPicture;
     }
 
     public void setPicture(byte[] picture) {
-        this.picture = picture;
+        this.mPicture = picture;
+    }
+
+    /**
+     * Edit quantities value helper methods.
+     */
+
+    public int incrementSaleQuantity() {
+        if (mQuantity > 0) {
+            setSoldQuantity(mSoldQuantity + 1);
+            setQuantity(mQuantity - 1);
+        }
+
+        return mSoldQuantity;
+    }
+
+    public int decrementSaleQuantity() {
+        if (mSoldQuantity > 0) {
+            setSoldQuantity(mSoldQuantity - 1);
+            setQuantity(mQuantity + 1);
+        }
+        return mSoldQuantity;
+    }
+
+    public int incrementReceiveQuantity() {
+        int originalValue = mReceiveQuantity;
+        setReceiveQuantity(originalValue + 1);
+
+        if (originalValue != mReceiveQuantity)
+            setQuantity(mQuantity + 1);
+
+        return mReceiveQuantity;
+    }
+
+    public int decrementReceiveQuantity() {
+        if (mQuantity > 0) {
+            int originalValue = mReceiveQuantity;
+            setReceiveQuantity(mReceiveQuantity - 1);
+
+            if (originalValue != mReceiveQuantity)
+                setQuantity(mQuantity - 1);
+        }
+
+        return mReceiveQuantity;
+    }
+
+    private boolean isValidQuantity(int quantity) {
+        return quantity >= 0;
     }
 
 }

@@ -34,7 +34,7 @@ public class ProductUtils {
     private ProductUtils() {
     }
 
-    public static Product productFromCursor(Cursor cursor) {
+    public static Product fromCursor(Cursor cursor) {
         int id = -1;
         if (isColumnExist(cursor, ProductEntry._ID))
             id = cursor.getInt(cursor.getColumnIndex(ProductContract.ProductEntry._ID));
