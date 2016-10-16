@@ -83,7 +83,7 @@
                 android:id="@+id/edit_product_price"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_product_price"
-                android:inputType="number" />
+                android:inputType="number|numberDecimal" />
         </RelativeLayout>
     </LinearLayout>
 

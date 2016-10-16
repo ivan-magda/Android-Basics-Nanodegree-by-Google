@@ -40,7 +40,12 @@ public class ImageUtils {
      * @return byte array
      */
     public static byte[] bytesFromImageView(ImageView imageView) {
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        if (bitmapDrawable == null) return null;
+
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        if (bitmap == null) return null;
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 

@@ -55,7 +55,7 @@
     <string name="editor_delete_product_failed">Error with deleting product</string>
     <string name="editor_delete_product_successful">Product successfully deleted</string>
     <string name="editor_insert_product_failed">Error with saving product</string>
-    <string name="editor_insert_product_successful">Product successfull saved</string>
+    <string name="editor_insert_product_successful">Product successful saved</string>
     <string name="editor_edit_product_successful">Product successfully updated</string>
     <string name="editor_edit_product_failed">Failed to update product</string>
     <string name="place_order_failed_msg">Select quantity that you want to request from the supplier</string>
@@ -67,4 +67,12 @@
     <string name="quantity">Quantity</string>
     <string name="sold">Sold</string>
     <string name="price">Price</string>
+    <string name="enter_product_name_msg">Enter product name</string>
+    <string name="enter_supplier_email_msg">Enter the supplier email address</string>
+    <string name="choose_picture_msg">Please choose product picture</string>
+    <string name="enter_product_price_msg">Enter price of the product</string>
+    <string name="enter_quantity_msg">Enter quantity of the product</string>
+    <string name="enter_sold_quantity_msg">Enter sold quantity</string>
+    <string name="enable">ENABLE</string>
+    <string name="enable_persmission_from_settings">Enable Permissions from settings</string>
 </resources>

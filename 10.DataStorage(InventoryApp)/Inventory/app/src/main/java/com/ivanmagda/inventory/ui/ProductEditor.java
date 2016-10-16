@@ -21,19 +21,26 @@
  */
 package com.ivanmagda.inventory.ui;
 
+import android.Manifest;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -66,6 +73,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
 
     private static final int PRODUCT_LOADER = 1;
     private static final int CHOOSE_PICTURE_RESULT = 2;
+    private static final int PERMISSION_REQUEST_READ_EXTERNAL_STORAGE = 3;
 
     /**
      * Helps to understand in what mode activity started.
@@ -142,6 +150,32 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_READ_EXTERNAL_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                startPickImageIntent();
+            } else {
+                Snackbar.make(findViewById(android.R.id.content),
+                        R.string.enable_persmission_from_settings,
+                        Snackbar.LENGTH_INDEFINITE).setAction(R.string.enable,
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent();
+                                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                                intent.setData(Uri.parse("package:" + getPackageName()));
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                startActivity(intent);
+                            }
+                        }).show();
+            }
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_product_editor, menu);
         return true;
@@ -161,8 +195,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                saveProduct();
-                finish();
+                if (saveProduct()) finish();
                 return true;
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
@@ -301,9 +334,38 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
      * Private helper method for choosing image from the gallery.
      */
     private void choosePictureFromGallery() {
+        if (ContextCompat.checkSelfPermission(ProductEditor.this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ProductEditor.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                Snackbar.make(findViewById(android.R.id.content),
+                        "Please Grant Permissions",
+                        Snackbar.LENGTH_INDEFINITE).setAction(R.string.enable,
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                requestReadExternalStoragePermission();
+                            }
+                        }).show();
+            } else {
+                requestReadExternalStoragePermission();
+            }
+        } else {
+            startPickImageIntent();
+        }
+    }
+
+    private void startPickImageIntent() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(galleryIntent, CHOOSE_PICTURE_RESULT);
+    }
+
+    private void requestReadExternalStoragePermission() {
+        ActivityCompat.requestPermissions(ProductEditor.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                PERMISSION_REQUEST_READ_EXTERNAL_STORAGE
+        );
     }
 
     private void didFinishChooseImageFromGallery(int resultCode, Intent data) {
@@ -373,47 +435,77 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
      * Private helper methods for working with the database.
      */
 
-    private void saveProduct() {
+    private boolean saveProduct() {
         ContentValues values = readFromInputs();
+        if (values == null) return false;
+
         switch (mActivityMode) {
             case CREATE_NEW:
                 Uri newRowUri = getContentResolver().insert(ProductEntry.CONTENT_URI, values);
-                if (newRowUri == null)
+                if (newRowUri == null) {
                     Toast.makeText(this, R.string.editor_insert_product_failed, Toast.LENGTH_SHORT).show();
-                else
+                } else {
                     Toast.makeText(this, R.string.editor_insert_product_successful, Toast.LENGTH_SHORT).show();
+                    return true;
+                }
                 break;
             case EDIT:
                 int updatedRows = getContentResolver().update(mCurrentProductUri, values, null, null);
-                if (updatedRows == 1)
+                if (updatedRows == 1) {
                     Toast.makeText(this, R.string.editor_edit_product_successful, Toast.LENGTH_SHORT).show();
-                else
+                    return true;
+                } else {
                     Toast.makeText(this, R.string.editor_edit_product_failed, Toast.LENGTH_SHORT).show();
-                break;
+                }
         }
+        return false;
     }
 
     private ContentValues readFromInputs() {
-        // Read from input text fields.
-        String name = mNameEditText.getText().toString().trim();
-        String supplier = mSupplierEmailEditText.getText().toString().trim();
         byte[] picture = ImageUtils.bytesFromImageView(mProductImageView);
-        String priceString = mPriceEditText.getText().toString().trim();
-        double price = 0;
-        String quantityString = mQuantityEditText.getText().toString().trim();
-        int quantity = 0;
+        if (picture == null) {
+            showToastWithMessage(getString(R.string.choose_picture_msg));
+            return null;
+        }
 
-        int soldQuantity = 0;
+        String name = mNameEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(name)) {
+            showToastWithMessage(getString(R.string.enter_product_name_msg));
+            return null;
+        }
+
+        String priceString = mPriceEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(priceString)) {
+            showToastWithMessage(getString(R.string.enter_product_price_msg));
+            return null;
+        }
+        double price = Double.parseDouble(priceString);
+
+        String quantityString = mQuantityEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(quantityString)) {
+            showToastWithMessage(getString(R.string.enter_quantity_msg));
+            return null;
+        }
+        int quantity = Integer.parseInt(quantityString);
+
+        String supplier = mSupplierEmailEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(supplier)) {
+            showToastWithMessage(getString(R.string.enter_supplier_email_msg));
+            return null;
+        }
+
+        int soldQuantity;
         if (mActivityMode == EDIT) {
             assert mProduct != null;
             soldQuantity = mProduct.getSoldQuantity();
         } else {
             String soldString = mSoldQuantityTextView.getText().toString();
-            if (!TextUtils.isEmpty(soldString)) soldQuantity = Integer.parseInt(soldString);
+            if (TextUtils.isEmpty(soldString)) {
+                showToastWithMessage(getString(R.string.enter_sold_quantity_msg));
+                return null;
+            }
+            soldQuantity = Integer.parseInt(soldString);
         }
-
-        if (!TextUtils.isEmpty(priceString)) price = Double.parseDouble(priceString);
-        if (!TextUtils.isEmpty(quantityString)) quantity = Integer.parseInt(quantityString);
 
         ContentValues values = new ContentValues();
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, name);
@@ -525,6 +617,10 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
     private String generateOrderSummary() {
         return "We need more " + mProduct.getName() +
                 " Please ship it with quantity of " + mProduct.getReceiveQuantity() + ".";
+    }
+
+    private void showToastWithMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }
