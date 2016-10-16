@@ -25,6 +25,8 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import com.ivanmagda.inventory.ui.ArrayUtils;
+
 public class ProductContract {
 
     // Prevent someone from accidentally instantiating the contract class.
@@ -103,6 +105,13 @@ public class ProductContract {
         public final static String COLUMN_PRODUCT_QUANTITY = "quantity";
 
         /**
+         * Sold quantity of the product.
+         * <p/>
+         * Type: INTEGER
+         */
+        public final static String COLUMN_PRODUCT_SOLD_QUANTITY = "sold_quantity";
+
+        /**
          * Supplier email of the product.
          * <p/>
          * Type: TEXT
@@ -116,12 +125,19 @@ public class ProductContract {
          */
         public final static String COLUMN_PRODUCT_PICTURE = "picture";
 
-        /**
-         * Sold quantity of the product.
-         * <p/>
-         * Type: INTEGER
-         */
-        public final static String COLUMN_PRODUCT_SOLD_QUANTITY = "sold_quantity";
+        public final static String[] PROJECTION_WITHOUT_MEDIA = {
+                ProductEntry._ID,
+                ProductEntry.COLUMN_PRODUCT_NAME,
+                ProductEntry.COLUMN_PRODUCT_PRICE,
+                ProductEntry.COLUMN_PRODUCT_QUANTITY,
+                ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY,
+                ProductEntry.COLUMN_PRODUCT_SUPPLIER
+        };
+
+        public final static String[] PROJECTION_ALL = ArrayUtils.concatenate(
+                PROJECTION_WITHOUT_MEDIA,
+                new String[]{ProductEntry.COLUMN_PRODUCT_PICTURE}
+        );
     }
 
 }

@@ -71,4 +71,39 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
+    <style name="EditLinearLayoutCategoryStyle">
+        <item name="android:paddingRight">@dimen/edit_category_padding</item>
+        <item name="android:paddingLeft">@dimen/edit_category_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="EditCategoryRelativeLayoutStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:paddingLeft">4dp</item>
+    </style>
+
+    <style name="TrackQuantityLhsButtonStyle">
+        <item name="android:layout_width">@dimen/quantity_button_width</item>
+        <item name="android:layout_height">@dimen/quantity_button_width</item>
+        <item name="android:layout_marginLeft">-4dp</item>
+    </style>
+
+    <style name="TrackQuantityRhsButtonStyle">
+        <item name="android:layout_width">@dimen/quantity_button_width</item>
+        <item name="android:layout_height">@dimen/quantity_button_width</item>
+    </style>
+
+    <style name="TrackQuantityTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/track_quantity_text_view_spacing</item>
+        <item name="android:paddingRight">@dimen/track_quantity_text_view_spacing</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
 </resources>

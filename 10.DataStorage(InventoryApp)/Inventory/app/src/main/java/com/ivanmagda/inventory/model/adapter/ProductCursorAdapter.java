@@ -66,15 +66,18 @@ public class ProductCursorAdapter extends CursorAdapter {
         // Find fields to populate in inflated template.
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
+        TextView soldQuantityTextView = (TextView) view.findViewById(R.id.sold_quantity);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
 
         // Extract properties from cursor.
         final Product product = ProductUtils.productFromCursor(cursor);
         String quantityString = String.valueOf(product.getQuantity());
+        String soldQuantityString = String.valueOf(product.getSoldQuantity());
         String priceString = CurrencyUtils.currencyString(product.getPrice());
 
         nameTextView.setText(product.getName());
         quantityTextView.setText(quantityString);
+        soldQuantityTextView.setText(soldQuantityString);
         priceTextView.setText(priceString);
 
         Button saleButton = (Button) view.findViewById(R.id.sale_button);

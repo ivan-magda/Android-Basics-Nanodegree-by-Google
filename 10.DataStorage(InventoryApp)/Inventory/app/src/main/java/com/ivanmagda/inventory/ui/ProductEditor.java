@@ -3,6 +3,8 @@ package com.ivanmagda.inventory.ui;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.View;
 
 import com.ivanmagda.inventory.R;
 
@@ -34,9 +36,27 @@ public class ProductEditor extends AppCompatActivity {
         configureUI();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product_editor, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (mActivityMode == CREATE_NEW) {
+            menu.findItem(R.id.action_delete).setVisible(false);
+            menu.findItem(R.id.action_order).setVisible(false);
+        }
+        return true;
+    }
+
     private void configureUI() {
         if (mActivityMode == CREATE_NEW) {
             setTitle(R.string.editor_activity_title_new_product);
+            findViewById(R.id.container_track_sale).setVisibility(View.GONE);
+            findViewById(R.id.container_receive_shipment).setVisibility(View.GONE);
         } else {
             setTitle(R.string.editor_activity_title_edit_product);
         }

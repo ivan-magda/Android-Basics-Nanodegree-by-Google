@@ -19,25 +19,35 @@
             style="@style/TitleTextView"
             tools:text="Name" />
 
-        <!--Product quantity.-->
+        <!--Product price-->
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/price"
             style="@style/DetailTextView"
             android:layout_alignBottom="@+id/name"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/name"
             android:gravity="center|right"
             android:paddingLeft="@dimen/quantity_text_view_horizontal_padding"
-            tools:text="24" />
+            tools:text="9.99$" />
 
-        <!--Product price-->
+        <!--Product quantity.-->
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/quantity"
             style="@style/DetailTextView"
             android:layout_below="@+id/name"
-            tools:text="100$" />
+            tools:text="24" />
+
+        <!--Product sold quantity.-->
+        <TextView
+            android:id="@+id/sold_quantity"
+            style="@style/DetailTextView"
+            android:layout_below="@+id/name"
+            android:layout_toRightOf="@id/quantity"
+            android:paddingLeft="4dp"
+            tools:text="2" />
     </RelativeLayout>
 
+    <!--Sale button-->
     <Button
         android:id="@+id/sale_button"
         android:layout_width="@dimen/sale_button_size"

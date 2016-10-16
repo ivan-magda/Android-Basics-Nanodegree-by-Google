@@ -1,69 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_product_editor"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.ivanmagda.inventory.ui.ProductEditor">
 
-    <!--Container view-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <include layout="@layout/content_product_editor" />
 
-        <!--Picture Category-->
-        <RelativeLayout
-            android:id="@+id/add_picture_empty_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/editor_activity_picture_height"
-            android:background="@color/divider">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/add_picture_text_view"
-                android:src="@drawable/ic_add_a_photo_white" />
-
-            <TextView
-                android:id="@+id/add_picture_text_view"
-                style="@style/TitleTextView"
-                android:layout_centerInParent="true"
-                android:paddingLeft="@dimen/text_margin"
-                android:text="@string/add_picture_empty_view_msg"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="#FFFFFF" />
-        </RelativeLayout>
-
-        <!-- Name Category -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/editor_section_padding">
-
-            <!-- Label -->
-            <TextView
-                style="@style/CategoryStyle"
-                android:text="@string/name" />
-
-            <!-- Input fields -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical"
-                android:paddingLeft="4dp">
-
-                <!-- Name field -->
-                <EditText
-                    android:id="@+id/edit_product_name"
-                    style="@style/EditorFieldStyle"
-                    android:hint="@string/hint_product_name"
-                    android:inputType="textCapWords" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.ivanmagda.inventory.ui.ProductEditor">
+
+    <!--Picture Category-->
+    <RelativeLayout
+        android:id="@+id/add_picture_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editor_activity_picture_height"
+        android:background="@color/divider">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/add_picture_text_view"
+            android:src="@drawable/ic_add_a_photo_white" />
+
+        <TextView
+            android:id="@+id/add_picture_text_view"
+            style="@style/TitleTextView"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/text_margin"
+            android:text="@string/add_picture_empty_view_msg"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+
+    <!-- Name Category -->
+    <LinearLayout
+        android:id="@+id/container_name"
+        style="@style/EditLinearLayoutCategoryStyle"
+        android:paddingTop="@dimen/edit_category_padding">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/name" />
+
+        <!-- Input fields -->
+        <RelativeLayout style="@style/EditCategoryRelativeLayoutStyle">
+            <!-- Name field -->
+            <EditText
+                android:id="@+id/edit_product_name"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_product_name"
+                android:inputType="textCapWords" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Price category -->
+    <LinearLayout
+        android:id="@+id/container_price"
+        style="@style/EditLinearLayoutCategoryStyle">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_price" />
+
+        <!-- Input fields -->
+        <RelativeLayout style="@style/EditCategoryRelativeLayoutStyle">
+            <!-- Price field -->
+            <EditText
+                android:id="@+id/edit_product_price"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_product_price"
+                android:inputType="number" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Quantity category -->
+    <LinearLayout
+        android:id="@+id/container_quantity"
+        style="@style/EditLinearLayoutCategoryStyle">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_quantity" />
+
+        <!-- Input fields -->
+        <RelativeLayout style="@style/EditCategoryRelativeLayoutStyle">
+            <!-- Quantity field -->
+            <EditText
+                android:id="@+id/edit_product_quantity"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_product_quantity"
+                android:inputType="number" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Supplier category -->
+    <LinearLayout
+        android:id="@+id/container_supplier"
+        style="@style/EditLinearLayoutCategoryStyle">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_supplier" />
+
+        <!-- Input fields -->
+        <RelativeLayout style="@style/EditCategoryRelativeLayoutStyle">
+            <!-- Quantity field -->
+            <EditText
+                android:id="@+id/edit_product_supplier"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_product_supplier_email"
+                android:inputType="textEmailAddress" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Track sale category -->
+    <LinearLayout
+        android:id="@+id/container_track_sale"
+        style="@style/EditLinearLayoutCategoryStyle"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:layout_width="match_parent"
+            android:text="@string/category_track_sale" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/decrement_sale_button"
+                style="@style/TrackQuantityLhsButtonStyle"
+                android:text="@string/minus_sign" />
+
+            <TextView
+                android:id="@+id/quantity_sale_text_view"
+                style="@style/TrackQuantityTextViewStyle"
+                android:text="@string/track_quantity_text_view_default" />
+
+            <Button
+                android:id="@+id/increment_sale_button"
+                style="@style/TrackQuantityRhsButtonStyle"
+                android:text="@string/plus_sign" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Receive shipment category -->
+    <LinearLayout
+        android:id="@+id/container_receive_shipment"
+        style="@style/EditLinearLayoutCategoryStyle"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/edit_category_padding">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:layout_width="match_parent"
+            android:paddingTop="4dp"
+            android:text="@string/category_receive_shipment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/decrement_shipment_button"
+                style="@style/TrackQuantityLhsButtonStyle"
+                android:text="@string/minus_sign" />
+
+            <TextView
+                android:id="@+id/quantity_shipment_text_view"
+                style="@style/TrackQuantityTextViewStyle"
+                android:text="@string/track_quantity_text_view_default" />
+
+            <Button
+                android:id="@+id/increment_shipment_button"
+                style="@style/TrackQuantityRhsButtonStyle"
+                android:text="@string/plus_sign" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

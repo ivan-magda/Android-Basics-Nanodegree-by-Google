@@ -100,15 +100,9 @@ public class ProductsListActivity extends AppCompatActivity implements LoaderMan
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         switch (id) {
             case INVENTORY_LOADER:
-                final String[] projection = {
-                        ProductEntry._ID,
-                        ProductEntry.COLUMN_PRODUCT_NAME,
-                        ProductEntry.COLUMN_PRODUCT_PRICE,
-                        ProductEntry.COLUMN_PRODUCT_QUANTITY,
-                        ProductEntry.COLUMN_PRODUCT_SOLD_QUANTITY
-                };
                 String sort = ProductEntry._ID + " DESC";
-                return new CursorLoader(this, ProductEntry.CONTENT_URI, projection, null, null, sort);
+                return new CursorLoader(this, ProductEntry.CONTENT_URI, ProductEntry.PROJECTION_WITHOUT_MEDIA,
+                        null, null, sort);
             default:
                 return null;
         }

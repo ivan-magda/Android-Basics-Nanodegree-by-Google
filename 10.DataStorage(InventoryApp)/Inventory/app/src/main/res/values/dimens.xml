@@ -5,12 +5,14 @@
 
     <dimen name="quantity_text_view_horizontal_padding">16dp</dimen>
     <dimen name="sale_button_size">36dp</dimen>
+    <dimen name="sale_button_margin_right">4dp</dimen>
 
     <!-- Margin around the floating action button in CatalogActivity -->
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="sale_button_margin_right">4dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
+
     <dimen name="text_margin">16dp</dimen>
     <dimen name="editor_activity_picture_height">200dp</dimen>
-    <dimen name="editor_section_padding">16dp</dimen>
+    <dimen name="edit_category_padding">16dp</dimen>
+    <dimen name="quantity_button_width">48dp</dimen>
+    <dimen name="track_quantity_text_view_spacing">8dp</dimen>
 </resources>
