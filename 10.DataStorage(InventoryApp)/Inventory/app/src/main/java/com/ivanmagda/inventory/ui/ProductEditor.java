@@ -25,6 +25,7 @@ import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -145,7 +146,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
                 showDeleteConfirmationDialog();
                 return true;
             case R.id.action_order:
-                // TODO: implement order behaviour.
+                placeOrder();
                 return true;
             case android.R.id.home:
                 if (!mProductHasChanged) {
@@ -402,6 +403,34 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    /**
+     * Helper method for placing an order with the specified supplier.
+     */
+    private void placeOrder() {
+        assert mProduct != null;
+
+        if (mProduct.getReceiveQuantity() == 0) {
+            Toast.makeText(this, R.string.place_order_failed_msg, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{mProduct.getSupplier()});
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.place_order_subject) + mProduct.getName());
+        intent.putExtra(Intent.EXTRA_TEXT, generateOrderSummary());
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, R.string.send_email_failed_msg, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private String generateOrderSummary() {
+        return "We need more " + mProduct.getName() +
+                " Please ship it with quantity of " + mProduct.getReceiveQuantity() + ".";
     }
 
 }

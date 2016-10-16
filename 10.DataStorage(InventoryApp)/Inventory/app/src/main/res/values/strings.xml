@@ -58,4 +58,7 @@
     <string name="editor_insert_product_successful">Product successfull saved</string>
     <string name="editor_edit_product_successful">Product successfully updated</string>
     <string name="editor_edit_product_failed">Failed to update product</string>
+    <string name="place_order_failed_msg">Select quantity that you want to request from the supplier</string>
+    <string name="place_order_subject">"Inventory order for "</string>
+    <string name="send_email_failed_msg">Could not send an email to the supplier</string>
 </resources>
