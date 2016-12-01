@@ -39,7 +39,7 @@ import com.ivanmagda.inventory.util.ProductUtils;
 public class ProductCursorAdapter extends CursorAdapter {
 
     public interface OnSaleButtonClickListener {
-        public void didPressSaleButtonForProduct(Product product);
+        void didPressSaleButtonForProduct(Product product);
     }
 
     private static final String LOG_TAG = ProductCursorAdapter.class.getSimpleName();

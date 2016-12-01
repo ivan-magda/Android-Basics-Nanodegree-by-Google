@@ -607,6 +607,7 @@ public class ProductEditor extends AppCompatActivity implements LoaderManager.Lo
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{mProduct.getSupplier()});
         intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.place_order_subject) + mProduct.getName());
         intent.putExtra(Intent.EXTRA_TEXT, generateOrderSummary());
+
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
