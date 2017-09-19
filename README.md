@@ -1,4 +1,7 @@
 # Android Basics Nanodegree by Google
+
+[![codebeat badge](https://codebeat.co/badges/e8bacc22-b7a8-498e-8e6f-416baf497615)](https://codebeat.co/projects/github-com-vanyaland-android-basics-nanodegree-by-google-master)
+
 Learn Java and Start Building Apps.
 
 This is repository where I will be posting the apps that I built during my [Nanodegree program](https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803) study.
